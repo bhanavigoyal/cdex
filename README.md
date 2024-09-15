@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Centralized-Decentralized Exchange (CDEX)
 
-## Getting Started
+CDEX is a platform that combines centralized and decentralized exchange features, enabling users to swap and transact tokens with ease. This project allows users to sign in using Google, manage cryptocurrency wallets, and perform asset swaps directly on the blockchain.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Google Sign-In**: Seamless user authentication with Google.
+- **Wallet Management**: Users can create and manage cryptocurrency wallets.
+- **Token Swaps**: Perform decentralized swaps of assets like SOL, USDT, and USDC.
+- **User-Friendly Interface**: Intuitive and responsive UI for managing and swapping assets.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js, Tailwind CSS
+- **Backend**: Express.js, Prisma
+- **Blockchain**: web3.js
+- **Database**: PostgreSQL
+- **Authentication**: NextAuth for Google sign-in
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+To set up the development environment, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the Repository**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/yourusername/cdex.git
+   cd cdex
+    ```
+2. **Clone the Repository**
+   ```bash
+   npm install
+   # or
+   yarn install
+    ```
+3. **Set Up Environmental Variables**
+Create a `.env` file in the root directory and add the following environment variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```env
+    DATABASE_URL=your_database_url
+    GOOGLE_CLIENT_ID=your_google_client_id
+    GOOGLE_CLIENT_SECRET=your_google_client_secret
+    ```
 
-## Deploy on Vercel
+4. **Run migrations**
+   Apply database migrations using Prisma:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npx prisma migrate dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. **Start Development Server**
+   ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+## Usage
+
+1. **Sign In**: Use Google authentication to sign in to the platform.
+
+2. **Create Wallet**: Generate and manage your cryptocurrency wallets. 
+
+3. **Swap Tokens**: Perform swaps between assets like SOL, USDT, and USDC.
+
+4. **View Transactions**: Track your transaction history and wallet balances.
+
+
+## Deployment
+
+To deploy the application, follow these steps:
+
+1. **Build the Application**
+
+   ```bash
+   npm run build
+   # or
+   yarn build
+    ```
+2. **Deploy to a Hosting Service**
+
+   You can deploy the built application to a service like Vercel, AWS Amplify, or any other hosting provider of your choice. Follow the hosting service's documentation for deployment procedures.
