@@ -116,7 +116,7 @@ function Greeting({image, name}:{
     image: string,
     name: string
 }){
-    return <div className="flex items-center">
+    return <div className="flex items-center pb-6">
         <img src={image} className="rounded-full w-14 h-14" />
         <div className="text-lg font-semibold flex flex-col pl-5">
             Welcome back, {name} !

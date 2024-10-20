@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export interface TokenWithBalance extends TokenDetails{
-    blance:string,
+    balance:string,
     usdBalance:string
 }
 
@@ -16,11 +16,15 @@ export function useTokens(address:string){
     const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
-        axios.get(`/api/tokens?address:${address}`)
-            .then(res=>{
-                setTokenBalances(res.data);
-                setLoading(false)
-            })
+        try{
+            axios.get(`/api/tokens?address=${address}`)
+                .then(res=>{
+                    setTokenBalances(res.data);
+                    setLoading(false)
+                })
+        }catch(e){
+            console.error(e)
+        }
     },[])
 
     return {

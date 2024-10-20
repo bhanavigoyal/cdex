@@ -14,7 +14,7 @@ const TOKEN_PRICE_REFRESH_INTERVAL = 60 * 1000;
 export async function getSupportedTokens(){
     if(!LAST_UPDATED || new Date().getTime() - LAST_UPDATED < TOKEN_PRICE_REFRESH_INTERVAL ){
         try{
-            const response = await axios.get("https://price.jup.ag/v6/price?ids=SOL,USDC,USDT");
+            const response = await axios.get("https://price.jup.ag/v6/price?ids=SOL,USDT,USDC");
             prices = response.data.data,
             LAST_UPDATED = new Date().getTime()
 
@@ -25,7 +25,7 @@ export async function getSupportedTokens(){
 
     return SUPPORTED_TOKENS.map(token=>({
         ...token,
-        price: prices[token.name].price
+        price: token.name === "USDC" ? "1" : (prices[token.name]?.price)
     }))
 }
 

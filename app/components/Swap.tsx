@@ -48,7 +48,7 @@ export const Swap=({publicKey, tokenBalances}:{
                         Current Balance: 
                     </div>
                     <div className="font-semibold">
-                        {tokenBalances?.tokens.find(x=> x.name === baseAsset.name)?.name} {baseAsset.name}
+                        {tokenBalances?.tokens.find(x=> x.name === baseAsset.name)?.balance} {baseAsset.name}
                     </div>
                 </div>}
                 onAmountChange={(value:string)=>{

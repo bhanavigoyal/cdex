@@ -31,20 +31,22 @@ export const authConfig={
             return newSession;
         },
         async jwt({token, account, profile}:any){
-            const user = await db.user.findFirst({
-                where:{
-                    sub: account.providerAccountId
-                }
-            })
+            if (account && account.providerAccountId){
+                const user = await db.user.findFirst({
+                    where:{
+                        sub: account.providerAccountId
+                    }
+                })
 
-            if(user){
-                token.uid = user.id
+                if(user){
+                    token.uid = user.id
+                }
             }
 
             return token
         },
 
-        async signIn({user, account, profile, email, credentials}:any){
+        async signIn({user, account, profile, credentials}:any){
             if(account?.provider === "google"){
                 const email = user.email;
                 if(!email)
@@ -68,7 +70,7 @@ export const authConfig={
                     data:{
                         username: email,
                         name: profile?.name,
-                        profilePicture: (profile as { picture?: string })?.picture ?? "",
+                        profilePicture: profile?.picture,
                         provider: "Google",
                         sub: account.providerAccountId,
                         solWallet:{
